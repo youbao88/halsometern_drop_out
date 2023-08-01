@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% from 'bootstrap5/form.html' import render_form_row%}
+{% block title %}{{_('Home')}}{% endblock %}
+{% block content%}
+
+<form method="post" class='pt-5' novalidate>
+  {{ form.csrf_token() }}
+  {{ render_form_row([form.id_code], col_map = {'id_code': 'col-md-5'})}}
+  {{ render_form_row([form.checked], col_map = {'id_code': 'col-md-5'})}}
+  {{ render_form_row([form.submit], button_style = 'secondary')}}
+</form>
+
+{% endblock %}
