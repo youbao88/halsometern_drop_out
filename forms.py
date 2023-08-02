@@ -6,7 +6,7 @@ from personnummer import personnummer
 
 def personnummerVerifier(form, field):
     if not personnummer.valid(field.data):
-        raise ValidationError('The format of personnummer is not valid')
+        raise ValidationError(_l('The format of personnummer is not valid'))
 
 
 class dropout_form(FlaskForm):

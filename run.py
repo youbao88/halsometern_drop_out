@@ -68,7 +68,7 @@ def home():
                     DroppedUser = DroppedUsers(idCode = id_code)
                     db.session.add(DroppedUser)
                     db.session.commit()
-                session['id_code'] = id_code
+                session['valid_id'] = True
                 return redirect(url_for('thankyou'))
             else:
                 flash(_('Invalid ID'), 'error')
@@ -76,8 +76,7 @@ def home():
 
 @app.route("/thankyou", methods=["GET", "POST"])
 def thankyou():
-    print(session.get('id_code'))
-    if session.get('id_code'):
+    if session.get('valid_id'):
         return render_template('thankyou.html')
     else:
         flash(_('You are not allowed to visit this page, redirected to the home page'))
